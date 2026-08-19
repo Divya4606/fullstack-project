@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Dashboard</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="jobapp.css">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-dark bg-dark px-4">
+
+        <a class="navbar-brand">
+            💼 Smart Job Tracker
+        </a>
+
+        <button
+            class="btn btn-outline-light"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+
+    </nav>
+
+
+    <!-- Main Content -->
+
+    <div class="container py-5">
+
+        <div class="dashboard-header">
+
+            <div>
+                <h1>Welcome Back 👋</h1>
+                <p>Manage your job applications easily.</p>
+            </div>
+
+            <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#jobModal"
+            >
+                + Add Job
+            </button>
+
+        </div>
+
+
+        <!-- Statistics -->
+
+        <div class="row g-4 mt-3">
+
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <h6>Total Applications</h6>
+                    <h2 id="totalJobs">0</h2>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <h6>Applied</h6>
+                    <h2 id="appliedJobs">0</h2>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <h6>Interview</h6>
+                    <h2 id="interviewJobs">0</h2>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <h6>Selected</h6>
+                    <h2 id="selectedJobs">0</h2>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Search -->
+
+        <div class="search-box mt-5">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="form-control"
+                placeholder="🔍 Search company or job role..."
+                onkeyup="searchJobs()"
+            >
+
+        </div>
+
+
+        <!-- Job Table -->
+
+        <div class="card mt-4">
+
+            <div class="card-body">
+
+                <h4>My Applications</h4>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover mt-3">
+
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="jobTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- POPUP MODAL -->
+
+    <div
+        class="modal fade"
+        id="jobModal"
+        tabindex="-1"
+    >
+
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Add Job Application 💼
+                    </h5>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                    ></button>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <form id="jobForm">
+
+                        <div class="mb-3">
+
+                            <label>Company Name</label>
+
+                            <input
+                                type="text"
+                                id="company"
+                                class="form-control"
+                                placeholder="Example: Google"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label>Job Role</label>
+
+                            <input
+                                type="text"
+                                id="role"
+                                class="form-control"
+                                placeholder="Example: Frontend Developer"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label>Status</label>
+
+                            <select
+                                id="status"
+                                class="form-select"
+                            >
+
+                                <option value="Applied">
+                                    Applied
+                                </option>
+
+                                <option value="Interview">
+                                    Interview
+                                </option>
+
+                                <option value="Selected">
+                                    Selected
+                                </option>
+
+                                <option value="Rejected">
+                                    Rejected
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100"
+                        >
+                            Save Application
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <script src="jobapp.js"></script>
+
+</body>
+</html>
